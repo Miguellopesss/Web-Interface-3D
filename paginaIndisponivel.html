@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Three.js HTML Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+body {
+    font-family: 'Lato', sans-serif;
+    margin: 0; /* Remova as margens padrão do corpo da página */
+
+}
+
+      .overlay {
+          height: 100%;
+          width: 0;
+          position: fixed;
+          z-index: 1;
+          top: 0;
+          left: 0;
+          background-color: rgb(0, 0, 0);
+          background-color: rgba(0, 0, 0, 0.9);
+          overflow-x: hidden;
+          transition: 0.5s;
+      }
+
+      .overlay-content {
+          position: relative;
+          top: 25%;
+          width: 100%;
+          text-align: center;
+          margin-top: 30px;
+      }
+
+      .overlay a {
+          padding: 8px;
+          text-decoration: none;
+          font-size: 36px;
+          color: #818181;
+          display: block;
+          transition: 0.3s;
+      }
+
+      .overlay a:hover, .overlay a:focus {
+          color: #f1f1f1;
+      }
+
+      .overlay .closebtn {
+          position: absolute;
+          top: 20px;
+          right: 45px;
+          font-size: 60px;
+      }
+
+
+      @media screen and (max-height: 450px) {
+          .overlay a {font-size: 20px}
+          .overlay .closebtn {
+              font-size: 40px;
+              top: 15px;
+              right: 35px;
+          }
+      }
+
+      .navbar {
+          overflow: hidden;
+          background-color: #8F4141;
+          top: 0;
+          width: 100%;
+          height: 2.5cm;
+          z-index: 2; /* Adicione um índice de camada maior para a barra de navegação */
+          display: flex;
+          padding: 5px;
+          align-items: center;
+      }
+      .navbar a {
+          float: left;
+          display: block;
+          color: #f2f2f2;
+          padding: 14px 16px;
+          text-decoration: none;
+          font-size: 17px;
+
+      }
+    </style>
+</head>
+
+<body>
+  <div id="myNav" class="overlay">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="overlay-content">
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Clients</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+
+  <div class="navbar" > 
+    <!-- Adição da imagem na barra de navegação -->
+     <!-- Adição da imagem na barra de navegação -->
+     <a href="main.html" class="Logo">
+      <img style="height: 2cm; width: 2cm;" src="model\logo.jpg" alt="Logo">
+    </a>
+    <a href="#news">Noticias</a>
+    <a href="main.html">Inicio</a>
+     <span style="margin-left: auto; font-size:30px;cursor:pointer;color:white;margin-right: 2%;" onclick="openNav()">&#9776; </span>
+  </div>
+<p></p>
+<h1 style="margin-top: 20%;margin-left: 40%;">Pagina Indisponivel</h1>
+  
+
+
+
+</body>
+</html>
+
+

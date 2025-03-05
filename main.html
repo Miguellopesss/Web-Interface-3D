@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Three.js HTML Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+        }
+
+        .overlay {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 7;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow-x: hidden;
+            transition: 0.5s;
+        }
+
+        .overlay-content {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .overlay a {
+            padding: 8px;
+            text-decoration: none;
+            font-size: 36px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .overlay a:hover,
+        .overlay a:focus {
+            color: #f1f1f1;
+        }
+
+        .overlay .closebtn {
+            position: absolute;
+            top: 20px;
+            right: 45px;
+            font-size: 60px;
+        }
+
+        @media screen and (max-height: 450px) {
+            .overlay a {
+                font-size: 20px
+            }
+
+            .overlay .closebtn {
+                font-size: 40px;
+                top: 15px;
+                right: 35px;
+            }
+        }
+
+        .navbar-custom {
+            overflow: hidden;
+            background-color: #8F4141;
+            top: 0;
+            width: 100%;
+            height: 2.5cm; /* Ajustado para acomodar o texto e o logo */
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            position: fixed;
+            transition: top 0.3s;
+        }
+
+        .navbar-custom a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+        #demo{
+            margin-bottom: 2%;
+        }
+
+        #demo .carousel-inner img {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        #demo .carousel-inner img:hover {
+            filter: brightness(90%);
+        }
+
+        .navbar-custom h1 {
+            color: #f2f2f2;
+            align-items: center;
+        }
+
+        .navbar-custom span {
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+            margin-left: auto; 
+            margin-right: 2%;
+        }
+
+        #demo .carousel-item {
+            position: relative;
+        }
+
+        .overlay-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffffff;
+            font-size: 35px;
+            text-align: center;
+            text-shadow: 2px 2px 4px #8F4141;
+            background-color: #8F4141;
+            padding: 20px; /* Adicione o espaçamento desejado ao redor do texto */
+            border-radius: 20px; 
+        }
+
+
+
+#demo2 .carousel-inner {
+    max-height: 40vh;
+    display: flex;
+
+}
+
+#demo2 .carousel-inner img {
+    width: 100%;
+    max-height: 40vh;
+    
+}
+#demo2 .carousel-item {
+    justify-content: space-between;
+}
+#demo2 .carousel-item .d-flex {
+    justify-content: space-between;
+}
+
+
+     .carousel-control-prev-icon {
+        background-color: #8F4141; /* Cor de fundo desejada */
+        border-radius: 50%; /* Adicione borda arredondada para ícone de seta */
+        
+    }
+
+    .carousel-control-next-icon {
+        background-color: #8F4141; /* Cor de fundo desejada */
+        border-radius: 50%; /* Adicione borda arredondada para ícone de seta */
+        
+    }
+
+/* Indicadores do segundo carrossel */
+ .carousel-indicators li {
+    background-color: #000000; /* Cor de fundo dos indicadores não selecionados */
+
+}
+
+ .carousel-indicators .active {
+    background-color: #8F4141; /* Cor de fundo do indicador selecionado */
+   
+}
+
+        
+    </style>
+</head>
+
+<body>
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+            <div style="width: 33.33%; box-sizing: border-box;"> <!-- Divisão horizontal -->
+                <p style="font-size: 36px;color: #818181;"><b>Casa:</b></p>
+                <a href="#">Secretarias</a>
+            </div>
+            <div style="width: 33.33%; box-sizing: border-box;"> <!-- Divisão horizontal -->
+                <p style="font-size: 36px;color: #818181;"><b>Jardim:</b></p>
+                <a href="#">Cadeiras</a>
+            </div>
+            <div style="width: 33.33%; box-sizing: border-box;"> <!-- Divisão horizontal -->
+              <p style="font-size: 36px;color: #818181;"><b>Moda:</b></p>
+                <a href="#">T-shirts</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="navbar-custom">
+        <a href="main.html" class="Logo">
+            <img style="height: 2cm; width: 2cm;" src="model\logo.jpg" alt="Logo">
+        </a>
+        <a href="paginaIndisponivel.html">Noticias</a>
+        <a href="main.html" style="margin-right: 30%;">Inicio</a>
+        <div class="center-content">
+            <h1 style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);"><b>Seja Bem Vindo</b></h1>
+        </div>
+        <span onclick="openNav()">&#9776;</span>
+    </div>
+
+    <p style="margin-top: 7%;"><h3 style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Categorias Principais:</h3> </p>
+
+    <div id="demo" class="carousel slide" data-ride="carousel">
+        <ul class="carousel-indicators"  style="z-index: 4;">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+        </ul>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <a href="paginaIndisponivel.html"><img src="model\moda.jpg" alt="Los Angeles"></a>
+                <div class="overlay-text">Moda</div>
+            </div>
+            <div class="carousel-item">
+                <a href="paginaIndisponivel.html"><img src="model\casa.jpg" alt="Chicago"></a>
+                <div class="overlay-text">Casa</div>
+            </div>
+            <div class="carousel-item">
+                <a href="paginaIndisponivel.html"><img src="model\jardim.jpg" alt="New York" style="object-position: center top;"></a>
+                <div class="overlay-text">Jardim</div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+
+    <div style="background-color: #8F4141; padding: 1%;margin-bottom: 2%;">
+    <p><h3 style="color: white;text-shadow: 2px 2px 4px rgba(255, 252, 252, 0.5);">Produtos em destaque:</h3> </p>
+<!-- Segundo Carrossel -->
+<div id="demo2" class="carousel slide" data-ride="carousel">
+    <ul class="carousel-indicators" style="z-index: 4;">
+        <li data-target="#demo2" data-slide-to="0" class="active" ></li>
+        <li data-target="#demo2" data-slide-to="1"></li>
+
+    </ul>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="d-flex">
+                <div style="margin-right: 0.3%;">
+                    <a href="paginaIndisponivel.html">
+                        <img class="d-block w-100" src="model\camisola1-1.jpg" alt="New York">
+                        <span>Legenda da Imagem 1</span>
+                    </a>
+                </div>
+                <div style="margin-right: 0.3%;">
+                    <a href="paginaIndisponivel.html">
+                        <img class="d-block w-100" src="model\camisola2-1.jpg" alt="New York">
+                        <span>Legenda da Imagem 2</span>
+                    </a>
+                </div>
+                <div style="margin-right: 0.3%;">
+                    <a href="secretaria2.html">
+                        <img class="d-block w-100" src="model\movel1.jpg" alt="New York">
+                        <span>Legenda da Imagem 3</span>
+                    </a>
+                </div>
+                <div style="margin-right: 0.3%;">
+                    <a href="secretaria1.html">
+                        <img class="d-block w-100" src="model\movel2-1.jpg" alt="New York">
+                        <span>Legenda da Imagem 4</span>
+                    </a>
+                </div>
+                <div style="margin-right: 0.3%;">
+                    <a href="paginaIndisponivel.html">
+                        <img class="d-block w-100" src="model\movel3-3.jpg" alt="New York">
+                        <span>Legenda da Imagem 5</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="carousel-item">
+            <div class="d-flex">
+                <a style="margin-right: 0.3%;" href="paginaIndisponivel.html"><img class="d-block w-100" src="model\sofa2-1.jpg" alt="Chicago"></a>
+                
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#demo2" data-slide="prev">
+        <span class="carousel-control-prev-icon" ></span>
+    </a>
+    <a class="carousel-control-next" href="#demo2" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+</div>
+
+</div>
+  
+
+    <script>
+        function openNav() {
+            document.getElementById("myNav").style.width = "100%";
+        }
+
+        function closeNav() {
+            document.getElementById("myNav").style.width = "0%";
+        }
+    </script>
+        <script>
+            let prevScrollpos = window.pageYOffset;
+    
+            window.onscroll = function() {
+                let currentScrollPos = window.pageYOffset;
+    
+                if (prevScrollpos > currentScrollPos) {
+                    // Rolar para cima
+                    document.querySelector('.navbar-custom').style.top = '0';
+                } else {
+                    // Rolar para baixo
+                    document.querySelector('.navbar-custom').style.top = '-2.5cm'; // Ajuste conforme necessário
+                }
+    
+                prevScrollpos = currentScrollPos;
+            };
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                // Pega os elementos relevantes
+                var carousel1Items = document.querySelectorAll("#demo2 .carousel-item")[0].querySelectorAll(".d-flex a");
+                var carousel2Items = document.querySelectorAll("#demo2 .carousel-item")[1].querySelector(".d-flex");
+        
+                // Adiciona as imagens do primeiro carousel ao segundo até que esteja completo
+                for (var i = 0; i < carousel1Items.length; i++) {
+                    var clone = carousel1Items[i].cloneNode(true);
+                    carousel2Items.appendChild(clone);
+                    if (carousel2Items.children.length == 5) {
+                        break;
+                    }
+                }
+            });
+        </script>
+        
+          
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

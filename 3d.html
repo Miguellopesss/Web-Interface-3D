@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Three.js HTML Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+body {
+    font-family: 'Lato', sans-serif;
+    margin: 0; /* Remova as margens padrão do corpo da página */
+}
+
+      .overlay {
+          height: 100%;
+          width: 0;
+          position: fixed;
+          z-index: 1;
+          top: 0;
+          left: 0;
+          background-color: rgb(0, 0, 0);
+          background-color: rgba(0, 0, 0, 0.9);
+          overflow-x: hidden;
+          transition: 0.5s;
+      }
+
+      .overlay-content {
+          position: relative;
+          top: 25%;
+          width: 100%;
+          text-align: center;
+          margin-top: 30px;
+      }
+
+      .overlay a {
+          padding: 8px;
+          text-decoration: none;
+          font-size: 36px;
+          color: #818181;
+          display: block;
+          transition: 0.3s;
+      }
+
+      .overlay a:hover, .overlay a:focus {
+          color: #f1f1f1;
+      }
+
+      .overlay .closebtn {
+          position: absolute;
+          top: 20px;
+          right: 45px;
+          font-size: 60px;
+      }
+
+
+      @media screen and (max-height: 450px) {
+          .overlay a {font-size: 20px}
+          .overlay .closebtn {
+              font-size: 40px;
+              top: 15px;
+              right: 35px;
+          }
+      }
+
+      .navbar {
+          overflow: hidden;
+          background-color: #8F4141;
+          top: 0;
+          width: 100%;
+          height: 1.5cm;
+          z-index: 2; /* Adicione um índice de camada maior para a barra de navegação */
+          display: flex;
+          padding: 10px;
+
+          align-items: center;
+      }
+      .navbar a {
+          float: left;
+          display: block;
+          color: #f2f2f2;
+          padding: 14px 16px;
+          text-decoration: none;
+          font-size: 17px;
+
+      }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+
+    .switch input { 
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+
+    input:focus + .slider {
+      box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+      border-radius: 34px;
+    }
+
+    .slider.round:before {
+      border-radius: 50%;
+    }
+
+    .buttons {
+        positions:relative;
+    }
+
+    .button-round {
+      display: inline-block;
+      border-radius: 50%;
+      overflow: hidden;
+      height: 40px;
+      width: 40px;
+    }
+
+    .button-round img {
+      width: 100%; /* Make the image fill the container */
+      height: 85%;
+      border-radius: 50%;
+      display: block; /* Remove extra space below the image */
+      padding: 0;
+      margin: 0;
+    }
+
+    #voltar {
+          padding: 8px;
+          margin-top: 20px;
+          text-decoration: none;
+          font-size: 26px;
+          color: #000000;
+          transition: 0.3s;
+          font-weight: bold;
+    }
+
+
+
+    </style>
+</head>
+
+<body>
+  <div id="myNav" class="overlay">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="overlay-content">
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Clients</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+
+  <div class="navbar" > 
+    <!-- Adição da imagem na barra de navegação -->
+     <!-- Adição da imagem na barra de navegação -->
+     <a href="main.html" class="Logo">
+      <img style="height: 1cm; width: 1cm;" src="model\logo.jpg" alt="Logo">
+    </a>
+    <a href="paginaIndisponivel.html">Noticias</a>
+    <a href="main.html">Inicio</a>
+     <span style="margin-left: auto; font-size:30px;cursor:pointer;color:white;margin-right: 2%;" onclick="openNav()">&#9776; </span>
+  </div>
+<p></p>
+  <div style="overflow: hidden;">
+    <div style="float: left; margin-right: 2%;margin-left: 5%;">
+      <canvas id="meuCanvas"></canvas>
+    </div>
+    <a id="voltar" href="secretaria2.html">Voltar</a>
+      <div class="buttons">
+          <h3>Auto Rotate</h3>
+          <label class="switch">
+              <input id="btn-autorotate" type="checkbox">
+              <span class="slider round"></span>
+          </label>
+          <br>
+          <h3>Colors</h3>
+          <div class="buttons-colors">
+              <button id="btn-color-wood" class="button-round">
+                <img src="/model/colors/Wood_Color_1K.png" alt="Image">
+              </button>
+              <button id="btn-color-light-oak" class="button-round">
+                <img src="/model/colors/LightOak_Color.png" alt="Image">
+              </button>
+              <button id="btn-color-walnut" class="button-round">
+                <img src="/model/colors/Walnut_Color.png" alt="Image">
+              </button>
+              <button id="btn-color-mahogany" class="button-round">
+                <img src="/model/colors/Mahogany_Color.png" alt="Image">
+              </button>
+          </div>
+        <!-- <h3>Material</h3> -->
+        <!--   <div class="buttons-materials"> -->
+        <!--       <button id="btn-material-wicker2" class="button-round"> -->
+        <!--         <img src="Wicker2_Normal_1K.png" alt="Button Image"> -->
+        <!--       </button> -->
+        <!--       <button id="btn-material-wood" class="button-round"> -->
+        <!--         <img src="Wood_Normal_2K.png" alt="Button Image"> -->
+        <!--       </button></div> -->
+          <h3>Tirar as pes</h3>
+          <div class="buttons-materials">
+              <button id="btn-tirar-pes" class="button-round">
+                <img src="" alt="" style="background: black;">
+              </button>
+          </div>
+      </div>
+  </div>
+
+  
+
+  <script async src="/node_modules/unpkg.com_es-module-shims@1.8.0_dist_es-module-shims.js"></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "/node_modules/three/build/three.module.js",
+        "three/addons/": "/node_modules/three/examples/jsm/"
+      }
+    }
+  </script>
+
+  <script type="module" defer src="./main.js"></script>
+
+  <script>
+    function openNav() {
+      document.getElementById("myNav").style.width = "100%";
+    }
+
+    function closeNav() {
+      document.getElementById("myNav").style.width = "0%";
+    }
+  </script>
+
+</body>
+</html>
+
+
