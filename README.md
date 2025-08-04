@@ -1,4 +1,5 @@
 📦 Projeto de Interface Web 3D — Sistemas Gráficos e Interação (2023/2024)
+
 Este projeto tem como objetivo o desenvolvimento de uma interface web 3D para a visualização de produtos de uma loja online, com base no site da empresa La Redoute. O projeto foi realizado no âmbito da unidade curricular Sistemas Gráficos e Interação (Licenciatura em Engenharia Informática – EID/EIPL), no ano letivo de 2023/2024.
 
 🔍 Etapas do Projeto:
